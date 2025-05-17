@@ -1,0 +1,52 @@
+1. Set page title to "People List".
+2. Show a heading: People List.
+3. Add a search input for filtering persons by name.
+4. Add two buttons:
+o Add Person – navigates to person creation page.
+o Print PDF – triggers PDF export.
+5. Define a printable area #printArea:
+o Show logo and title "People Report".
+o Display a table with headers:
+▪ Name, Email, Address, Department, Actions
+o Table body is dynamically filled using AJAX.
+JavaScript Logic
+On Page Load
+• Call loadPersons() to fetch and display persons.
+Function: loadPersons(departmentId = "")
+• Send AJAX GET request to /Person/GetPersons with optional department filter.
+• On success:
+o Clear the existing table body.
+o If no data: show "No persons found."
+o Sort data alphabetically by name.
+o Loop through each person:
+▪ Add a row with person details.
+▪ Include Edit and Delete action buttons.
+Search Filtering
+•
+When user types in #searchBox:
+o
+Convert input to lowercase.
+o
+Show/hide table rows based on whether the row contains the search term. Print PDF Functionality
+•
+When "Print PDF" button is clicked:
+o
+Clone #printArea to avoid affecting UI.
+o
+Remove the "Actions" column (last column).
+o
+Create a custom footer with:
+▪
+Current date and time.
+▪
+Total number of records.
+▪
+Signature line and contact info.
+o
+Configure PDF options (margins, filename, image quality, etc.).
+o
+Generate PDF using html2pdf.
+o
+Add page numbers to each PDF page.
+o
+Save/download the PDF.
